@@ -1,0 +1,25 @@
+name: Octopus to Tado Sync
+
+on:
+  workflow_dispatch:
+    inputs:
+      historical:
+        description: "Enable historical sync (true/false)"
+        required: false
+        default: "false"
+      start_date:
+        description: "Start date for historical sync (YYYY-MM-DD)"
+        required: false
+      end_date:
+        description: "End date for historical sync (YYYY-MM-DD)"
+        required: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+      - run: echo "Workflow is running!"
